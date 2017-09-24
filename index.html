@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
@@ -44,23 +44,23 @@
 <center><h2>Grand Piano Example<h2></center>
 <br>
 <div id="sans">
-MIDI ���Ղ��Ȃ��ŉ������B���Ղ������ƃs�A�m�̉����o�܂��B<br>
-�܂��́A���̂悤�Ƀp�\�R���̃L�[�{�[�h�������ƃs�A�m�̉����o�܂��B<br>
+MIDI 鍵盤をつないで下さい。鍵盤を押すとピアノの音が出ます。<br>
+または、下のようにパソコンのキーボードを押すとピアノの音が出ます。<br>
 </div>
 <!--	------------------------------------------------------------------ -->
-<img src="grandpiano/keyboard.jpg" width="400">
+<img src="jpeg/keyboard.jpg" width="400">
 
 <br>
 <!--	------------------------------------------------------------------ -->
 <div id="sans">
-���́F
+入力：
 <form name="input_device_select">
 <select name="ids" 
 onChange="inputDeviceSelect(this); input.onmidimessage = handleMIDIMessageGroundpiano;">
 <option value="0">No Device
 </select>
 </form>
-�o�́F
+出力：
 <form name="output_device_select">
 <select name="ids" onChange="outputDeviceSelect(this);">
 <option value="0">No Device

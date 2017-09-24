@@ -73,23 +73,23 @@ window.addEventListener('load', function (){
 	}
 
 	//Load Files
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTB0.wav" ,mb0 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTC0.wav" ,mc0 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTF0.wav" ,mf0 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTA1.wav" ,ma1 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTD1.wav" ,md1 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTFs1.wav",mf1s);
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTA2.wav" ,ma2 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTCs2.wav",mc2s);
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTE2.wav" ,me2 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTCs3.wav",mc3s);
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTF3.wav" ,mf3 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTGs3.wav",mg3s);
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTB4.wav" ,mb4 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTD4.wav" ,md4 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTG4.wav" ,mg4 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTD5.wav" ,md5 );
-	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTF5.wav" ,mf5 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB0.wav" ,mb0 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTC0.wav" ,mc0 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF0.wav" ,mf0 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA1.wav" ,ma1 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD1.wav" ,md1 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTFs1.wav",mf1s);
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA2.wav" ,ma2 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTCs2.wav",mc2s);
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTE2.wav" ,me2 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTCs3.wav",mc3s);
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF3.wav" ,mf3 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTGs3.wav",mg3s);
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB4.wav" ,mb4 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD4.wav" ,md4 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTG4.wav" ,mg4 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD5.wav" ,md5 );
+	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF5.wav" ,mf5 );
 
 /*	var timerId=setInterval(function(){
 		if(mReadFlag==SOUNDNUM){
