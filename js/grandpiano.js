@@ -1,0 +1,202 @@
+
+	const mc0 = 0;
+	const mf0 = mc0 +1;
+	const mb0 = mf0 +1;
+
+	const md1 = mb0 +1;
+	const mf1s= md1 +1;
+	const ma1 = mf1s+1;
+
+	const mc2s= ma1 +1;
+	const me2 = mc2s+1;
+	const ma2 = me2 +1;
+
+	const mc3s= ma2 +1;
+	const mf3 = mc3s+1;
+	const mg3s= mf3 +1;
+
+	const md4 = mg3s+1;
+	const mg4 = md4 +1;
+	const mb4 = mg4 +1;
+
+	const md5 = mb4 +1;
+	const mf5 = md5 +1;
+	const SOUNDNUM = mf5+1;
+
+	var mLocalAudioBuffer= null;
+	var	mAudioBuffer = null;
+	var audioContext = null;	//Use Audio Interface
+	var mReadFlag=0;
+	var audioSource = null;
+
+	var mKeylim = Array(SOUNDNUM);
+	var mKeyTotal = 0;
+
+window.addEventListener('load', function (){
+
+	mLocalAudioBuffer= Array(SOUNDNUM);
+	mAudioBuffer = Array(SOUNDNUM);
+	audioContext = new AudioContext(); //Use Audio Interface
+	mReadFlag=0;
+
+	for(var i=0; i<SOUNDNUM; i++){
+		mLocalAudioBuffer[i]=new LocalAudioBuffer();
+	}
+
+	//Key Information
+	for(var i=0; i<SOUNDNUM; i++){
+		mKeylim[i]=new Array(3);
+	}
+
+	mKeylim[mc0 ] = [ 21,36,38 ];
+	mKeylim[mf0 ] = [ 39,41,44 ];
+	mKeylim[mb0 ] = [ 45,47,48 ];
+	mKeylim[md1 ] = [ 49,50,51 ];
+	mKeylim[mf1s] = [ 52,54,55 ];
+	mKeylim[ma1 ] = [ 56,57,58 ];
+	mKeylim[mc2s] = [ 59,61,62 ];
+	mKeylim[me2 ] = [ 63,64,66 ];
+	mKeylim[ma2 ] = [ 67,69,70 ];
+	mKeylim[mc3s] = [ 71,73,74 ];
+	mKeylim[mf3 ] = [ 75,77,78 ];
+	mKeylim[mg3s] = [ 79,80,83 ];
+	mKeylim[md4 ] = [ 84,86,88 ];
+	mKeylim[mg4 ] = [ 89,91,93 ];
+	mKeylim[mb4 ] = [ 94,95,96 ];
+	mKeylim[md5 ] = [ 97,98,99 ];
+	mKeylim[mf5 ] = [ 100,101,108 ];
+
+	mKeyTotal = mKeylim[mf5 ][2] - mKeylim[mc0 ][0]+1;
+	audioSource = Array(mKeyTotal);
+	for(var i=0; i<mKeyTotal; i++){
+		audioSource[i]=null;
+	}
+
+	//Load Files
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTB0.wav" ,mb0 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTC0.wav" ,mc0 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTF0.wav" ,mf0 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTA1.wav" ,ma1 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTD1.wav" ,md1 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTFs1.wav",mf1s);
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTA2.wav" ,ma2 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTCs2.wav",mc2s);
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTE2.wav" ,me2 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTCs3.wav",mc3s);
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTF3.wav" ,mf3 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTGs3.wav",mg3s);
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTB4.wav" ,mb4 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTD4.wav" ,md4 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTG4.wav" ,mg4 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTD5.wav" ,md5 );
+	loadDogSound("http://haramikata.jougennotuki.com/grandpiano/PFSTF5.wav" ,mf5 );
+
+/*	var timerId=setInterval(function(){
+		if(mReadFlag==SOUNDNUM){
+			clearInterval(timerId);
+			for(i=21; i<100; i++){
+				goPianoSound( i )
+			}
+		}
+	}, 500 );
+*/
+
+	// Web MIDI API
+	setInputMenuID(document.input_device_select.ids);
+	setOutputMenuID(document.output_device_select.ids);
+	runTest();
+
+	var timerId2=setInterval(function(){
+		if(input!=null){
+			clearInterval(timerId2);
+			input.onmidimessage = handleMIDIMessageGroundpiano;
+		}
+	}, 500 );
+
+
+}, false);
+
+function loadDogSound(url, n) {
+	var request = new XMLHttpRequest();
+	request.open('GET', url, true);
+	request.responseType = 'arraybuffer';
+
+// Decode asynchronously
+	request.onload = function() {
+		audioContext.decodeAudioData(request.response, function(buffer) {
+		mAudioBuffer[n]= buffer; 
+		mLocalAudioBuffer[n].fSetBuffer(mAudioBuffer[n]);
+		mReadFlag++;
+		}, function(){ alert('Error'); } );
+	}
+	request.send();
+}
+
+function handleMIDIMessageGroundpiano( event )
+{
+	var str=null;
+	var status, data1, data2;
+
+	if( event.data[0] ==0xFE ) return;
+	if( event.data[0] ==0xF8 ) return;
+
+	status = event.data[0]&0xF0;
+	data1  = event.data[1];
+	data2  = event.data[2];
+
+	if(status==0x90 && data2==0) status=0x80;
+
+	switch( status ){
+		case 0x80:
+			mNoteoff(data1);
+			break;
+		case 0x90:
+			mNoteon(data1);
+			break;
+		case 0xA0:
+			break;
+		case 0xB0:
+			break;
+		case 0xC0:
+			break;
+		case 0xD0:
+			break;
+		case 0xE0:
+			break;
+		case 0xF0:
+			break;
+	}
+
+}
+
+function mNoteoff( ckay )
+{
+	var jnum=ckay- mKeylim[mc0 ][0];
+	if(audioSource[jnum]!=null){
+		audioSource[jnum].stop(1);								// play the source now
+		audioSource[jnum]=null;
+	}
+}
+
+function mNoteon( ckey )
+{
+	var cnum=0;
+	var jnum=ckey- mKeylim[mc0 ][0];
+
+	if( jnum >= mKeyTotal ) return; 
+
+	for(var i=0; i<SOUNDNUM; i++){
+		if( ckey >= mKeylim[i][0] && ckey <= mKeylim[i][2] ) {
+			cnum =i;
+			break;
+		}
+	}
+
+	var computedPlaybackRate = Math.pow(2, (ckey-mKeylim[cnum][1])/12);
+
+	audioSource[jnum] = audioContext.createBufferSource();	// creates a sound source
+	audioSource[jnum].buffer = mAudioBuffer[cnum];			// tell the source which sound to play
+	audioSource[jnum].connect(audioContext.destination);
+	audioSource[jnum].playbackRate.value = computedPlaybackRate;
+	audioSource[jnum].start(0);								// play the source now
+}

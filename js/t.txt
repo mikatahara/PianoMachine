@@ -1,0 +1,18 @@
+	//Load Files
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTB0.wav" ,0);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTC0.wav" ,1);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTF0.wav" ,2);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTA1.wav" ,3);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTD1.wav" ,4);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTF#1.wav",5);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTA2.wav" ,6);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTC#2.wav",7);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTE2.wav" ,8);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTC#3.wav",9);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTF3.wav" ,10);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTG#3.wav",11);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTB4.wav" ,12);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTD4.wav" ,13);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTG4.wav" ,14);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTD5.wav" ,15);
+	loadDogSound("http://haramikata.jougennotuki.com/padpng/PFSTF5.wav" ,16);

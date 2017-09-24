@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+	<meta http-equiv="Content-Script-Type" content="text/javascript">
+	<script src="js/localaudiobuffer.js" type="text/javascript"></script>
+	<script src="https://mikatahara.github.io/mywebmidiapi.js" type="text/javascript"></script>
+	<script src="js/grandpiano.js" type="text/javascript"></script>
+	<script src="js/keyboard.js" type="text/javascript"></script>
+
+<style type="text/css">
+    <!--
+    #sans { color: black; font-family:sans-serif ;  font-size: 10pt; line-height : 1.5em}
+	#mono { color: black; font-family:monospace ; font-size: 12pt; line-height : 1.5em}
+	#2-1mar2 { margin: 20px 40px; backGround-color: pink; } 
+
+#log {
+		width:100%;
+		height:200px;
+		margin: 0 auto;
+		background-color:#eee;
+		white-space:pre;
+		font-family:Courier New, monospace;
+		font-size:1.0em;
+		overflow:auto;
+	}
+
+#tlog {
+		width:100%;
+		height:50px;
+		margin: 0 auto;
+		background-color:#eee;
+		white-space:pre;
+		font-family:Courier New, monospace;
+		font-size:1.0em;
+		overflow:auto;
+	}
+    -->
+    </style>
+
+</head>
+
+<body>
+<center><h2>Grand Piano Example<h2></center>
+<br>
+<div id="sans">
+MIDI 鍵盤をつないで下さい。鍵盤を押すとピアノの音が出ます。<br>
+または、下のようにパソコンのキーボードを押すとピアノの音が出ます。<br>
+</div>
+<!--	------------------------------------------------------------------ -->
+<img src="grandpiano/keyboard.jpg" width="400">
+
+<br>
+<!--	------------------------------------------------------------------ -->
+<div id="sans">
+入力：
+<form name="input_device_select">
+<select name="ids" 
+onChange="inputDeviceSelect(this); input.onmidimessage = handleMIDIMessageGroundpiano;">
+<option value="0">No Device
+</select>
+</form>
+出力：
+<form name="output_device_select">
+<select name="ids" onChange="outputDeviceSelect(this);">
+<option value="0">No Device
+</select>
+</form>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="log"></div>
+</body>
+<!--	-------------------------------------------------------------------- -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-66117399-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!--	-------------------------------------------------------------------- -->
+</html>
