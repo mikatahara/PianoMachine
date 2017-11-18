@@ -7,17 +7,28 @@ window.addEventListener('load', function (){
 	document.onkeyup = keyup;
 	for(var i=0; i<128; i++){ mPushkey[i]=0; }
 
+	//Piano Keyboard PICT
+	pianopict_init();
+
 }, false);
 
 function keydown(event) {
 
-	var cKeynum=setKeycode(event.keyCode);
+	var l_keycode=event.keyCode;
 
-	if(cKeynum!=-1){
+	if(l_keycode>='0' && l_keycode<='9'){
+		pianopict_change(l_keycode-'0');
 
-		if(mPushkey[cKeynum]==0){
-			mNoteon(cKeynum);
-			mPushkey[cKeynum]=1;
+	} else {
+
+		var cKeynum=setKeycode(event.keyCode);
+
+		if(cKeynum!=-1){
+
+			if(mPushkey[cKeynum]==0){
+				mNoteon(cKeynum);
+				mPushkey[cKeynum]=1;
+			}
 		}
 	}
 }
