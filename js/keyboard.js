@@ -94,5 +94,5 @@ function setKeycode( num ){
 			break;
 	}
 
-	return cKeynum-numKeyShift*12;
+	return cKeynum+numKeyShift*12;
 }
