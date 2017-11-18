@@ -1,5 +1,9 @@
 
 	var mPushkey=Array(128);
+	var timerId=null;
+	var beatx	=125;	//16•ª‰¹•„‚Ì’·‚³@ms
+	var seq	=[ 48, -1, -1, -1, -1, -1, -1, -1 ];	//ƒhƒ‰ƒ€‚Ì‰¹—Ê
+	var mcount=0;
 
 window.addEventListener('load', function (){
 
@@ -9,6 +13,23 @@ window.addEventListener('load', function (){
 
 	//Piano Keyboard PICT
 	pianopict_init();
+
+	//Loop Timer
+	timerId=setInterval(function(){
+
+		var l_count=mcount-1;
+		l_count%=8;
+
+		if(seq[l_count]!=-1){
+			mNoteoff(seq[l_count]);
+		}
+
+		if(seq[mcount]!=-1){
+			mNoteon(seq[mcount]);
+		}
+		mcount++; mcount%=8;
+
+	}, beatx);
 
 }, false);
 
