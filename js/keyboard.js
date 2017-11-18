@@ -16,8 +16,8 @@ function keydown(event) {
 
 	var l_keycode=event.keyCode;
 
-	if(l_keycode>='0' && l_keycode<='9'){
-		pianopict_change(l_keycode-'0');
+	if(l_keycode>=48 && l_keycode<=57){
+		pianopict_change(l_keycode-48);
 
 	} else {
 
