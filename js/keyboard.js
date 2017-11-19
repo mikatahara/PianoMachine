@@ -4,6 +4,7 @@
 	var beatx	=125;	//16•ª‰¹•„‚Ì’·‚³@ms
 	var seq	=[ 48, -1, -1, -1, -1, -1, -1, -1 ];	//ƒhƒ‰ƒ€‚Ì‰¹—Ê
 	var mcount=0;
+	var mode=0;
 
 window.addEventListener('load', function (){
 
@@ -15,9 +16,10 @@ window.addEventListener('load', function (){
 	pianopict_init();
 
 	//Loop Timer
+	if(mode==1)
 	timerId=setInterval(function(){
 
-		var l_count=mcount-1;
+		var l_count=mcount+6;
 		l_count%=8;
 
 		if(seq[l_count]!=-1){
