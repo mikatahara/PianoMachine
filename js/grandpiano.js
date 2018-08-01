@@ -1,4 +1,4 @@
-
+﻿
 	const mc0 = 0;
 	const mf0 = mc0 +1;
 	const mb0 = mf0 +1;
@@ -25,7 +25,8 @@
 
 	var mLocalAudioBuffer= null;
 	var	mAudioBuffer = null;
-	var audioContext = null;	//Use Audio Interface
+	var mAudioContext = null;	//Use Audio Interface
+	var mBuffersize = 1024;
 	var mReadFlag=0;
 	var audioSource = null;
 
@@ -36,7 +37,35 @@ window.addEventListener('load', function (){
 
 	mLocalAudioBuffer= Array(SOUNDNUM);
 	mAudioBuffer = Array(SOUNDNUM);
-	audioContext = new AudioContext(); //Use Audio Interface
+	mAudioContext = new AudioContext(); //Use Audio Interface
+	mNode 		= mAudioContext.createScriptProcessor(mBuffersize, 2, 2);
+	mNode.onaudioprocess = process;
+/*
+	// Give the node a function to process audio events
+	mNode.onaudioprocess = function(audioProcessingEvent) {
+
+		// The input buffer is the song we loaded earlier
+		var inputBuffer = audioProcessingEvent.inputBuffer;
+
+		// The output buffer contains the samples that will be modified and played
+		var outputBuffer = audioProcessingEvent.outputBuffer;
+
+		// Loop through the output channels (in this case there is only one)
+		for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
+			var inputData = inputBuffer.getChannelData(channel);
+			var outputData = outputBuffer.getChannelData(channel);
+
+			// Loop through the 4096 samples
+			for (var sample = 0; sample < inputBuffer.length; sample++) {
+			// make output equal to the same as the input
+				outputData[sample] = inputData[sample];
+				// add noise to each output sample
+				outputData[sample] += ((Math.random() * 2) - 1) * 0.2;         
+			}
+		}
+	}
+*/
+
 	mReadFlag=0;
 
 	for(var i=0; i<SOUNDNUM; i++){
@@ -123,7 +152,7 @@ function loadDogSound(url, n) {
 
 // Decode asynchronously
 	request.onload = function() {
-		audioContext.decodeAudioData(request.response, function(buffer) {
+		mAudioContext.decodeAudioData(request.response, function(buffer) {
 		mAudioBuffer[n]= buffer; 
 		mLocalAudioBuffer[n].fSetBuffer(mAudioBuffer[n]);
 		mReadFlag++;
@@ -194,9 +223,56 @@ function mNoteon( ckey )
 
 	var computedPlaybackRate = Math.pow(2, (ckey-mKeylim[cnum][1])/12);
 
-	audioSource[jnum] = audioContext.createBufferSource();	// creates a sound source
+	audioSource[jnum] = mAudioContext.createBufferSource();	// creates a sound source
 	audioSource[jnum].buffer = mAudioBuffer[cnum];			// tell the source which sound to play
-	audioSource[jnum].connect(audioContext.destination);
+	audioSource[jnum].connect(mNode);
+	mNode.connect(mAudioContext.destination);
 	audioSource[jnum].playbackRate.value = computedPlaybackRate;
 	audioSource[jnum].start(0);								// play the source now
 }
+
+/* Audio Buffer が一杯になったらこの関数が呼ばれる */
+function process(audioProcessingEvent){
+
+	// The input buffer is the song we loaded earlier
+	var inputBuffer = audioProcessingEvent.inputBuffer;
+
+	// The output buffer contains the samples that will be modified and played
+	var outputBuffer = audioProcessingEvent.outputBuffer;
+
+
+	// Loop through the output channels (in this case there is only one)
+	for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
+		var inputData = inputBuffer.getChannelData(channel);
+		var outputData = outputBuffer.getChannelData(channel);
+
+		// Loop through the 4096 samples
+		for (var sample = 0; sample < inputBuffer.length; sample++) {
+			// make output equal to the same as the input
+			outputData[sample] = inputData[sample];
+			// add noise to each output sample
+//			outputData[sample] += ((Math.random() * 2) - 1) * 0.2;         
+		}
+	}
+
+	if(mRecStart){
+		onRecProcess(outputData,outputData.length);
+	}
+
+}
+
+var mRecStart=0;
+
+function startWaveRecord()
+{
+	mRecStart=1;
+}
+
+function stopWaveRecord()
+{
+	exportWAV(audioData);
+	mRecStart=0;
+	mCount=0;
+	audioData = [];
+}
+
