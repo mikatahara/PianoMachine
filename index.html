@@ -9,6 +9,8 @@
 	<script src="js/keyboard.js" type="text/javascript"></script>
 	<script src="js/pianopict.js" type="text/javascript"></script>
 	<script src="js/myAudioRec.js" type="text/javascript"></script>
+	<script src="js/arpeggio.js" type="text/javascript"></script>
+	
 	<link rel="stylesheet" media="screen" href="https://mikatahara.github.io/mywebmidiapi.css">
 <style>
 	#keyboard {
@@ -37,7 +39,7 @@
 <tr><td colspan="3" align="center"><b>Select MIDI Port</b></td></tr>
 <tr><td>Input Device:
 <form name="input_device_select">
-<select name="ids" onChange="inputDeviceSelect(this);">
+<select name="ids" onChange="setMIDIinputDevice(this)">
 <option value="0">No Device
 </select>
 </form>
@@ -55,6 +57,11 @@ Output Device:
 <form id="button2">
 <input type="button" value="Rec" onclick="startWaveRecord()">
 <input type="button" value="Stop" onclick="stopWaveRecord()">
+&nbsp;&nbsp;&nbsp;&nbsp;
+Arpeggio : <input type="checkbox" name="Arpeggio" onChange="startArpeggio(this);" >
+&nbsp;&nbsp;&nbsp;&nbsp;
+Tempo:
+<input type="number" name="tempo"  step="1" min="60" max="360" value="120" onChange="edittempo(this);">
 </form>
 
 <div id="log"></div>

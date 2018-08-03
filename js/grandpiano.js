@@ -21,59 +21,34 @@
 
 	const md5 = mb4 +1;
 	const mf5 = md5 +1;
-	const SOUNDNUM = mf5+1;
+	const mSOUNDNUM = mf5+1;
 
-	var mLocalAudioBuffer= null;
-	var	mAudioBuffer = null;
-	var mAudioContext = null;	//Use Audio Interface
-	var mBuffersize = 1024;
-	var mReadFlag=0;
-	var audioSource = null;
+	var mLocalAudioBuffer	= null;
+	var	mAudioBuffer		= null;
+	var mAudioContext		= null;	//Use Audio Interface
+	var mBuffersize 		= 1024;
+	var mReadFlag			= 0;
+	var mAudioSource 		= null;
 
-	var mKeylim = Array(SOUNDNUM);
-	var mKeyTotal = 0;
+	var mKeylim 			= new Array(mSOUNDNUM);
+	var mKeyTotal 			= 0;
 
 window.addEventListener('load', function (){
 
-	mLocalAudioBuffer= Array(SOUNDNUM);
-	mAudioBuffer = Array(SOUNDNUM);
+	mLocalAudioBuffer= Array(mSOUNDNUM);
+	mAudioBuffer = Array(mSOUNDNUM);
 	mAudioContext = new AudioContext(); //Use Audio Interface
 	mNode 		= mAudioContext.createScriptProcessor(mBuffersize, 2, 2);
 	mNode.onaudioprocess = process;
-/*
-	// Give the node a function to process audio events
-	mNode.onaudioprocess = function(audioProcessingEvent) {
-
-		// The input buffer is the song we loaded earlier
-		var inputBuffer = audioProcessingEvent.inputBuffer;
-
-		// The output buffer contains the samples that will be modified and played
-		var outputBuffer = audioProcessingEvent.outputBuffer;
-
-		// Loop through the output channels (in this case there is only one)
-		for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
-			var inputData = inputBuffer.getChannelData(channel);
-			var outputData = outputBuffer.getChannelData(channel);
-
-			// Loop through the 4096 samples
-			for (var sample = 0; sample < inputBuffer.length; sample++) {
-			// make output equal to the same as the input
-				outputData[sample] = inputData[sample];
-				// add noise to each output sample
-				outputData[sample] += ((Math.random() * 2) - 1) * 0.2;         
-			}
-		}
-	}
-*/
 
 	mReadFlag=0;
 
-	for(var i=0; i<SOUNDNUM; i++){
+	for(var i=0; i<mSOUNDNUM; i++){
 		mLocalAudioBuffer[i]=new LocalAudioBuffer();
 	}
 
 	//Key Information
-	for(var i=0; i<SOUNDNUM; i++){
+	for(var i=0; i<mSOUNDNUM; i++){
 		mKeylim[i]=new Array(3);
 	}
 
@@ -96,9 +71,9 @@ window.addEventListener('load', function (){
 	mKeylim[mf5 ] = [ 100,101,108 ];
 
 	mKeyTotal = mKeylim[mf5 ][2] - mKeylim[mc0 ][0]+1;
-	audioSource = Array(mKeyTotal);
+	mAudioSource = Array(mKeyTotal);
 	for(var i=0; i<mKeyTotal; i++){
-		audioSource[i]=null;
+		mAudioSource[i]=null;
 	}
 
 	//Load Files
@@ -121,7 +96,7 @@ window.addEventListener('load', function (){
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF5.wav" ,mf5 );
 
 /*	var timerId=setInterval(function(){
-		if(mReadFlag==SOUNDNUM){
+		if(mReadFlag==mSOUNDNUM){
 			clearInterval(timerId);
 			for(i=21; i<100; i++){
 				goPianoSound( i )
@@ -161,6 +136,12 @@ function loadDogSound(url, n) {
 	request.send();
 }
 
+function setMIDIinputDevice(e)
+{
+	inputDeviceSelect(e);
+	input.onmidimessage = handleMIDIMessageGroundpiano;
+}
+
 function handleMIDIMessageGroundpiano( event )
 {
 	var str=null;
@@ -178,9 +159,11 @@ function handleMIDIMessageGroundpiano( event )
 	switch( status ){
 		case 0x80:
 			mNoteoff(data1);
+			mPushkey[data1]=0;
 			break;
 		case 0x90:
 			mNoteon(data1);
+			mPushkey[data1]=1;
 			break;
 		case 0xA0:
 			break;
@@ -201,9 +184,10 @@ function handleMIDIMessageGroundpiano( event )
 function mNoteoff( ckay )
 {
 	var jnum=ckay- mKeylim[mc0 ][0];
-	if(audioSource[jnum]!=null){
-		audioSource[jnum].stop(1);								// play the source now
-		audioSource[jnum]=null;
+
+	if(mAudioSource[jnum]!=null){
+		mAudioSource[jnum].stop(1);								// play the source now
+		mAudioSource[jnum]=null;
 	}
 }
 
@@ -214,7 +198,7 @@ function mNoteon( ckey )
 
 	if( jnum >= mKeyTotal ) return; 
 
-	for(var i=0; i<SOUNDNUM; i++){
+	for(var i=0; i<mSOUNDNUM; i++){
 		if( ckey >= mKeylim[i][0] && ckey <= mKeylim[i][2] ) {
 			cnum =i;
 			break;
@@ -223,12 +207,17 @@ function mNoteon( ckey )
 
 	var computedPlaybackRate = Math.pow(2, (ckey-mKeylim[cnum][1])/12);
 
-	audioSource[jnum] = mAudioContext.createBufferSource();	// creates a sound source
-	audioSource[jnum].buffer = mAudioBuffer[cnum];			// tell the source which sound to play
-	audioSource[jnum].connect(mNode);
+	if(mAudioSource[jnum]!=null ){
+		mAudioSource[jnum].stop(10);							// play the source now
+		mAudioSource[jnum]=null;
+	}
+
+	mAudioSource[jnum] = mAudioContext.createBufferSource();	// creates a sound source
+	mAudioSource[jnum].buffer = mAudioBuffer[cnum];				// tell the source which sound to play
+	mAudioSource[jnum].connect(mNode);
 	mNode.connect(mAudioContext.destination);
-	audioSource[jnum].playbackRate.value = computedPlaybackRate;
-	audioSource[jnum].start(0);								// play the source now
+	mAudioSource[jnum].playbackRate.value = computedPlaybackRate;
+	mAudioSource[jnum].start(0);								// play the source now
 }
 
 /* Audio Buffer が一杯になったらこの関数が呼ばれる */

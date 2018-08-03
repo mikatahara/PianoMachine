@@ -1,10 +1,5 @@
 
 	var mPushkey=Array(128);
-	var timerId=null;
-	var beatx	=125;	//16•ª‰¹•„‚Ì’·‚³@ms
-	var seq	=[ 48, -1, -1, -1, -1, -1, -1, -1 ];	//ƒhƒ‰ƒ€‚Ì‰¹—Ê
-	var mcount=0;
-	var mode=0;
 
 window.addEventListener('load', function (){
 
@@ -15,24 +10,6 @@ window.addEventListener('load', function (){
 	//Piano Keyboard PICT
 	pianopict_init();
 
-	//Loop Timer
-	if(mode==1)
-	timerId=setInterval(function(){
-
-		var l_count=mcount+6;
-		l_count%=8;
-
-		if(seq[l_count]!=-1){
-			mNoteoff(seq[l_count]);
-		}
-
-		if(seq[mcount]!=-1){
-			mNoteon(seq[mcount]);
-		}
-		mcount++; mcount%=8;
-
-	}, beatx);
-
 }, false);
 
 function keydown(event) {
@@ -41,7 +18,11 @@ function keydown(event) {
 
 	if(l_keycode>=48 && l_keycode<=57){
 		pianopict_change(l_keycode-48);
-
+		for(var i=0; i<128; i++){
+			mPushkey[i]=0;
+			mNoteoff(i);
+		}
+	
 	} else {
 
 		var cKeynum=setKeycode(event.keyCode);
@@ -49,7 +30,7 @@ function keydown(event) {
 		if(cKeynum!=-1){
 
 			if(mPushkey[cKeynum]==0){
-				mNoteon(cKeynum);
+				if(!mArpeggio) mNoteon(cKeynum);
 				mPushkey[cKeynum]=1;
 			}
 		}
