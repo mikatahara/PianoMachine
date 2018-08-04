@@ -20,7 +20,7 @@ function startArpeggio(e)
 function edittempo(e)
 {
 	mBeatx = 60*1000/e.value;
-	setArpTimer();
+	if(mArpeggio) setArpTimer();
 }
 
 function setArpTimer()
