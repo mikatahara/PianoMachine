@@ -11,6 +11,9 @@ function pianopict_init()
 	pianopict.innerHTML = "<img src=\"jpeg/pianokey8.jpg\" width=\"1200\">";
 	pianopict.innerHTML = "<img src=\"jpeg/pianokey5.jpg\" width=\"1200\">";
 
+	pianopict.innerHTML += "<br\">";
+	pianopict.innerHTML += "<img src=\"jpeg/octave.jpg\" width=\"1200\">";
+
 	numKeyShift=0;
 }
 
@@ -41,5 +44,10 @@ function pianopict_change(n)
 			numKeyShift=3;
 			pianopict.innerHTML = "<img src=\"jpeg/pianokey8.jpg\" width=\"1200\">";
 			break;
+	}
+
+	if(n>=3 && n<=8){
+		pianopict.innerHTML += "<br\">";
+		pianopict.innerHTML += "<img src=\"jpeg/octave.jpg\" width=\"1200\">";	
 	}
 }
