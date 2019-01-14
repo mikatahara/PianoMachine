@@ -12,32 +12,29 @@
 	<script src="js/myAudioRec.js" type="text/javascript"></script>
 	<script src="js/arpeggio.js" type="text/javascript"></script>
 
-
-	
 	<link rel="stylesheet" media="screen" href="https://mikatahara.github.io/mywebmidiapi.css">
 <style>
 	#keyboard {
-		width:100%; height:210px;
+		width:100%;
+		height:210px;
+		position: absolute;
+		top:130px;
+		left:auto;
+		background-color:#ffffff;
     }
 </style>
 
 </head>
 
-<body>
-<center><h2>Piano Machine<h2></center>
-<br>
-<br>
-<br>
-<br>
-<center>
+<body bgcolor="#ffffff" text="#222222" link="#0000ff" vlink="#ff00ff" 
+	alink="#ff0000" style="margin-right:28px;margin-left:28px; margin-top:10px;">
+
+<div style="position: absolute; top:34px; left:420px; width:600px; background-color:#ffffff; font-size:28px; text-align:center;" class="sans">Piano Machine</div>
 <!--	------------------------------------------------------------------ -->
 <div id="keyboard"></div>
-</center>
-</center>
 
-<br>
 <!--	------------------------------------------------------------------ -->
-<div id="sans" style="background-color: #bde9ba; position: absolute; top:28px; left:100px;">
+<div id="sans" style="background-color: #ffffff; position: absolute; top:28px; left:100px;">
 <table>
 <tr><td colspan="3" align="center"><b>Select MIDI Port</b></td></tr>
 <tr><td>Input Device:
@@ -55,9 +52,9 @@ Output Device:
 </form>
 </td></tr></table>
 </div>
+
 <!--	-------------------------------------------------------------------- -->
-<br>
-<form id="button2">
+<form id="button2" style="position: absolute; top:600px; left:auto; width:100%; background-color:#ff00ff;">
 <input type="button" value="Rec" onclick="startWaveRecord()">
 <input type="button" value="Stop" onclick="stopWaveRecord()">
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -67,7 +64,10 @@ Tempo:
 <input type="number" id="tempo_id"  step="1" min="60" max="360" value="120" onChange="edittempo(this);">
 </form>
 
-<div id="log"></div>
+
+<!--	------------------------------------------------------------------ -->
+<div id="log" style="position: absolute; top:550px; left:auto; width:100%; height:50px; font-color:#ffffff; background-color:#ffffff;"></div>
+
 </body>
 
 <!--	-------------------------------------------------------------------- -->
