@@ -1,5 +1,10 @@
+var mChrodOn=0;
 
-	var mPushkey=Array(128);
+/*	----------------------------------------------------------------	*/
+/*	Define behavire for PC keyboard										*/
+/*	----------------------------------------------------------------	*/
+
+var mPushkey=Array(128);
 
 window.addEventListener('load', function (){
 
@@ -7,10 +12,13 @@ window.addEventListener('load', function (){
 	document.onkeyup = keyup;
 	for(var i=0; i<128; i++){ mPushkey[i]=0; }
 
-	//Piano Keyboard PICT
-	pianopict_init();
+//	console.log("Z".charCodeAt(0)); // 90
 
 }, false);
+
+/*	----------------------------------------------------------------	*/
+/* Key ‚ª‰Ÿ‚³‚ê‚½‚Æ‚«‚ÌŠÖ”											*/
+/*	----------------------------------------------------------------	*/
 
 function keydown(event) {
 
@@ -23,6 +31,11 @@ function keydown(event) {
 			mNoteoff(i);
 		}
 	
+	}
+
+	if( mMode == 1 ){
+		chordplay(l_keycode);
+
 	} else {
 
 		var cKeynum=setKeycode(event.keyCode);
@@ -38,6 +51,13 @@ function keydown(event) {
 }
 
 function keyup(event) {
+
+	var l_keycode=event.keyCode;
+
+	if( mMode == 1 ){
+		choroff(l_keycode);
+		return;
+	}
 
 	var cKeynum=setKeycode(event.keyCode);
 
@@ -100,3 +120,76 @@ function setKeycode( num ){
 
 	return cKeynum+numKeyShift*12;
 }
+
+function chordplay( num ){
+
+	var bkey0=chordbase(num);
+	var bkey1;
+	var bkey2;
+
+	if(mChrodOn==1) return;
+
+	if(bkey0!=-1){
+		bkey1=bkey0+4;
+		bkey2=bkey0+7;
+
+		if(mPushkey[bkey0]==0){
+			if(!mArpeggio){
+				mNoteon(bkey0); mNoteon(bkey1); mNoteon(bkey2);
+			}
+			mArpcnt=0;
+			mPushkey[bkey0]=1; mPushkey[bkey1]=1; mPushkey[bkey2]=1;
+		}
+		mChrodOn=1;
+	}
+}
+
+function choroff(num)
+{
+	var bkey0=chordbase(num);
+
+	if(mChrodOn==0) return;
+
+	if(bkey0!=-1){
+		bkey1=bkey0+4;
+		bkey2=bkey0+7;
+
+		mPushkey[bkey0]=0;
+		mPushkey[bkey1]=0;
+		mPushkey[bkey2]=0;
+		mChrodOn=0;
+	}
+}
+
+function chordbase(num)
+{
+
+	var cKeynum=-1;
+
+	switch( num ){
+		case "C".charCodeAt(0):
+			cKeynum = 60;
+			break;
+		case "D".charCodeAt(0):
+			cKeynum = 62;
+			break;
+		case "E".charCodeAt(0):
+			cKeynum = 64;
+			break;
+		case "F".charCodeAt(0):
+			cKeynum = 65;
+			break;
+		case "G".charCodeAt(0):
+			cKeynum = 67;
+			break;
+		case "A".charCodeAt(0):
+			cKeynum = 69;
+			break;
+		case "B".charCodeAt(0):
+			cKeynum = 71;
+			break;
+	}
+
+	return cKeynum+numKeyShift*12;
+}
+

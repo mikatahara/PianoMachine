@@ -1,5 +1,4 @@
-﻿var mMode=0;
-var mArpTimerId=null;
+﻿var mArpTimerId=null;
 var mBeatx	=512;	//16分音符の長さ　ms
 var mArpeggio = 0;
 var mArpcnt=0;
@@ -17,6 +16,15 @@ function startArpeggio(e)
 	}
 }
 
+function stopArpeggio()
+{
+	if(mArpTimerId!=null){
+		clearInterval(mArpTimerId);
+		mArpTimerId=null;
+		mArpcnt=0;
+	}
+}
+
 function edittempo(e)
 {
 	mBeatx = 60*1000/e.value;
@@ -29,6 +37,8 @@ function setArpTimer()
 		clearInterval(mArpTimerId);
 		mArpTimerId=null;
 	}
+
+	mArpcnt=0;
 
 	mArpTimerId=setInterval(function(){
 

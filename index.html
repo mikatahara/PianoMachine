@@ -11,6 +11,7 @@
 	<script src="js/pianopict.js" type="text/javascript"></script>
 	<script src="js/myAudioRec.js" type="text/javascript"></script>
 	<script src="js/arpeggio.js" type="text/javascript"></script>
+	<script src="js/modechange.js" type="text/javascript"></script>
 
 	<link rel="stylesheet" media="screen" href="https://mikatahara.github.io/mywebmidiapi.css">
 <style>
@@ -62,6 +63,12 @@ Arpeggio : <input type="checkbox" name="Arpeggio" onChange="startArpeggio(this);
 &nbsp;&nbsp;&nbsp;&nbsp;
 Tempo:
 <input type="number" id="tempo_id"  step="1" min="60" max="360" value="120" onChange="edittempo(this);">
+&nbsp;&nbsp;&nbsp;&nbsp;
+Mode:
+<select name="mode" value="1" onChange="changemode(this);">
+<option value="0">Piano Play
+<option value="1">Chord
+</select>
 </form>
 
 

@@ -1,8 +1,12 @@
 var pianopict=null;
-var numKeyShift;
+var numKeyShift=0;
 
-function pianopict_init()
-{
+/*	----------------------------------------------------------------	*/
+/* Piano Keyboard PICT Initialize										*/
+/*	----------------------------------------------------------------	*/
+
+window.addEventListener('load', function (){
+
 	pianopict = document.getElementById("keyboard");
 	pianopict.innerHTML = "<img src=\"jpeg/pianokey3.jpg\" width=\"1200\">";
 	pianopict.innerHTML = "<img src=\"jpeg/pianokey4.jpg\" width=\"1200\">";
@@ -15,7 +19,8 @@ function pianopict_init()
 	pianopict.innerHTML += "<img src=\"jpeg/octave.jpg\" width=\"1200\">";
 
 	numKeyShift=0;
-}
+
+}, false);
 
 function pianopict_change(n)
 {
