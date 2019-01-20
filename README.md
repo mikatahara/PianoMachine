@@ -12,11 +12,11 @@
 - Piano Play Mode
 <img src="pianoplaymode.jpg">
 <br>
-- By pushing keyboard 'Z', 'X', ..., you can get piano sound.<br>
+- By pressing keyboard 'Z', 'X', ..., you can get piano sound.<br>
 <br>
 <img src="keylayout1.jpg">
 <br>
-- By pushing numeric keyboard, you can select octave.<br>
+- By pressing numeric keyboard, you can select octave.<br>
 -- "3" - 2oct down<br>
 -- "4" - 1oct down<br>
 -- "5" - center<br>
@@ -26,6 +26,10 @@
 <br>
 - Chrod Mode
 <img src="chrodmode.jpg">
+<br>
+-- By pressing keyboard 'C','D','E','F','G',A','B' you can get piano sound of Major Chord.<br>
+-- Combination with 'm' key, The chord is changed to Minor.
+-- Combination with 'k" key, The 7th tone is added.
 <br>
 - If you have a midi keyboard, plsease select Input MIDI Device.<br>
 - Hit a key on the midi keyboard as bellow, you can get piano sound.<br>
