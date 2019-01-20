@@ -38,6 +38,8 @@ function keydown(event) {
 	if( mMode == 1 ){
 		if(l_keycode=="M".charCodeAt(0)){
 			mMinor=1;
+		} else if (l_keycode=="7".charCodeAt(0)){
+			mSeventh=1;
 		} else {
 			chordplay(l_keycode);
 		}
@@ -63,6 +65,8 @@ function keyup(event) {
 	if( mMode == 1 ){
 		if(l_keycode=="M".charCodeAt(0)){
 			mMinor=0;
+		} else if (l_keycode=="7".charCodeAt(0)){
+			mSeventh=0;
 		} else {
 			choroff(l_keycode);
 		}
@@ -134,8 +138,9 @@ function setKeycode( num ){
 function chordplay( num ){
 
 	var bkey0=chordbase(num);
-	var bkey1;
-	var bkey2;
+	var bkey1=-1;
+	var bkey2=-1;
+	var bkey3=-1;
 
 	if(mChrodOn==1) return;
 
@@ -146,13 +151,19 @@ function chordplay( num ){
 			bkey1=bkey0+4;
 		}
 		bkey2=bkey0+7;
+		
+		if(mSeventh==1){
+			bkey3=bkey0+10;
+		}
 
 		if(mPushkey[bkey0]==0){
 			if(!mArpeggio){
 				mNoteon(bkey0); mNoteon(bkey1); mNoteon(bkey2);
+				if(bkey3!=-1) mNoteon(bkey3);
 			}
 			mArpcnt=0;
 			mPushkey[bkey0]=1; mPushkey[bkey1]=1; mPushkey[bkey2]=1;
+			if(bkey3!=-1) mPushkey[bkey3]=1;
 		}
 		mChrodOn=1;
 	}
@@ -161,6 +172,9 @@ function chordplay( num ){
 function choroff(num)
 {
 	var bkey0=chordbase(num);
+	var bkey1=-1;
+	var bkey2=-1;
+	var bkey3=-1;
 
 	if(mChrodOn==0) return;
 
@@ -172,9 +186,14 @@ function choroff(num)
 		}
 		bkey2=bkey0+7;
 
+		if(mSeventh==1){
+			bkey3=bkey0+10;
+		}
+
 		mPushkey[bkey0]=0;
 		mPushkey[bkey1]=0;
 		mPushkey[bkey2]=0;
+		if(bkey3!=-1) mPushkey[bkey3]=0;
 		mChrodOn=0;
 	}
 }
