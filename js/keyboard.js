@@ -1,4 +1,6 @@
 var mChrodOn=0;
+var mMinor=0;
+var mSeventh=0;
 
 /*	----------------------------------------------------------------	*/
 /*	Define behavire for PC keyboard										*/
@@ -34,7 +36,11 @@ function keydown(event) {
 	}
 
 	if( mMode == 1 ){
-		chordplay(l_keycode);
+		if(l_keycode=="M".charCodeAt(0)){
+			mMinor=1;
+		} else {
+			chordplay(l_keycode);
+		}
 
 	} else {
 
@@ -55,7 +61,11 @@ function keyup(event) {
 	var l_keycode=event.keyCode;
 
 	if( mMode == 1 ){
-		choroff(l_keycode);
+		if(l_keycode=="M".charCodeAt(0)){
+			mMinor=0;
+		} else {
+			choroff(l_keycode);
+		}
 		return;
 	}
 
@@ -130,7 +140,11 @@ function chordplay( num ){
 	if(mChrodOn==1) return;
 
 	if(bkey0!=-1){
-		bkey1=bkey0+4;
+		if(mMinor==1){
+			bkey1=bkey0+3;
+		} else {
+			bkey1=bkey0+4;
+		}
 		bkey2=bkey0+7;
 
 		if(mPushkey[bkey0]==0){
@@ -151,7 +165,11 @@ function choroff(num)
 	if(mChrodOn==0) return;
 
 	if(bkey0!=-1){
-		bkey1=bkey0+4;
+		if(mMinor==1){
+			bkey1=bkey0+3;
+		} else {
+			bkey1=bkey0+4;
+		}
 		bkey2=bkey0+7;
 
 		mPushkey[bkey0]=0;
