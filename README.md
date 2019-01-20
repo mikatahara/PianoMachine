@@ -8,7 +8,13 @@
 <br>
 
 - However you can't get this view, please reloard thie page.<br>
-- By pushing keyboard 'Z', 'X', ..., you can get drum sound.<br>
+<br>
+<img src="pianoplaymode.jpg">
+<br>
+- By pushing keyboard 'Z', 'X', ..., you can get piano sound.<br>
+<br>
+<img src="keylayout1.jpg">
+<br>
 - By pushing numeric keyboard, you can select octave.<br>
 -- "3" - 2oct down<br>
 -- "4" - 1oct down<br>
@@ -16,6 +22,7 @@
 -- "6" - 1oct up<br>
 -- "7" - 2oct up<br>
 -- "8" - 3oct up<br>
+<br>
 - If you have a midi keyboard, plsease select Input MIDI Device.<br>
 - Hit a key on the midi keyboard as bellow, you can get piano sound.<br>
 
