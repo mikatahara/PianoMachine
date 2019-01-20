@@ -38,7 +38,7 @@ function keydown(event) {
 	if( mMode == 1 ){
 		if(l_keycode=="M".charCodeAt(0)){
 			mMinor=1;
-		} else if (l_keycode=="7".charCodeAt(0)){
+		} else if (l_keycode=="K".charCodeAt(0)){
 			mSeventh=1;
 		} else {
 			chordplay(l_keycode);
@@ -65,7 +65,7 @@ function keyup(event) {
 	if( mMode == 1 ){
 		if(l_keycode=="M".charCodeAt(0)){
 			mMinor=0;
-		} else if (l_keycode=="7".charCodeAt(0)){
+		} else if (l_keycode=="K".charCodeAt(0)){
 			mSeventh=0;
 		} else {
 			choroff(l_keycode);
