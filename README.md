@@ -7,7 +7,7 @@
   
 - However you can't get this view, please reloard thie page.
   
-## Piano Play Mode
+### Piano Play Mode
   
 <img src="pianoplaymode.jpg">
   
@@ -23,14 +23,16 @@
 -- "7" - 2oct up
 -- "8" - 3oct up
   
-## Chrod Mode
+### Chrod Mode
   
 <img src="chrodmode.jpg">
   
 -- By pressing keyboard 'C','D','E','F','G',A','B' you can get piano sound of Major Chord.
 -- Combination with 'm' key, The chord is changed to Minor.
 -- Combination with 'k" key, The 7th tone is added.
+
+### MIDI Keyboard
   
 - If you have a midi keyboard, plsease select Input MIDI Device.
-- Hit a key on the midi keyboard as bellow, you can get piano sound.
+- Using a midi keyboard, you can get piano sound.
 
