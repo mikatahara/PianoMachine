@@ -16,20 +16,20 @@
 <img src="keylayout1.jpg">
   
 - By pressing numeric keyboard, you can select octave.
--- "3" - 2oct down
--- "4" - 1oct down
--- "5" - center
--- "6" - 1oct up
--- "7" - 2oct up
--- "8" - 3oct up
+ - "3" - 2oct down
+ - "4" - 1oct down
+ - "5" - center
+ - "6" - 1oct up
+ - "7" - 2oct up
+ - "8" - 3oct up
   
 ### Chrod Mode
   
 <img src="chrodmode.jpg">
   
--- By pressing keyboard 'C','D','E','F','G',A','B' you can get piano sound of Major Chord.
--- Combination with 'm' key, The chord is changed to Minor.
--- Combination with 'k" key, The 7th tone is added.
+- By pressing keyboard 'C','D','E','F','G',A','B' you can get piano sound of Major Chord.
+ - Combination with 'm' key, The chord is changed to Minor.
+ - Combination with 'k" key, The 7th tone is added.
 
 ### MIDI Keyboard
   
