@@ -1,36 +1,36 @@
 # PianoMachine
 - These programs use Web Audio API and Web MIDI API
-- You can play to acsess as below. https://mikatahara.github.io/PianoMachine/<br>
-- When you open this page you have following view.<br>
-
-<br>
+- You can play to acsess as below. https://mikatahara.github.io/PianoMachine/
+- When you open this page you have following view.
+  
 <img src="PianoMachineImage.jpg">
-<br>
-
-- However you can't get this view, please reloard thie page.<br>
-<br>
+  
+- However you can't get this view, please reloard thie page.
+  
 ## Piano Play Mode
+  
 <img src="pianoplaymode.jpg">
-<br>
-- By pressing keyboard 'Z', 'X', ..., you can get piano sound.<br>
-<br>
+  
+- By pressing keyboard 'Z', 'X', ..., you can get piano sound.
+  
 <img src="keylayout1.jpg">
-<br>
-- By pressing numeric keyboard, you can select octave.<br>
--- "3" - 2oct down<br>
--- "4" - 1oct down<br>
--- "5" - center<br>
--- "6" - 1oct up<br>
--- "7" - 2oct up<br>
--- "8" - 3oct up<br>
-<br>
+  
+- By pressing numeric keyboard, you can select octave.
+-- "3" - 2oct down
+-- "4" - 1oct down
+-- "5" - center
+-- "6" - 1oct up
+-- "7" - 2oct up
+-- "8" - 3oct up
+  
 ## Chrod Mode
+  
 <img src="chrodmode.jpg">
-<br>
--- By pressing keyboard 'C','D','E','F','G',A','B' you can get piano sound of Major Chord.<br>
+  
+-- By pressing keyboard 'C','D','E','F','G',A','B' you can get piano sound of Major Chord.
 -- Combination with 'm' key, The chord is changed to Minor.
 -- Combination with 'k" key, The 7th tone is added.
-<br><br>
-- If you have a midi keyboard, plsease select Input MIDI Device.<br>
-- Hit a key on the midi keyboard as bellow, you can get piano sound.<br>
+  
+- If you have a midi keyboard, plsease select Input MIDI Device.
+- Hit a key on the midi keyboard as bellow, you can get piano sound.
 
