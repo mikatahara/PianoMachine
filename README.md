@@ -10,6 +10,7 @@
 - However you can't get this view, please reloard thie page.<br>
 <br>
 - Piano Play Mode
+<br>
 <img src="pianoplaymode.jpg">
 <br>
 - By pushing keyboard 'Z', 'X', ..., you can get piano sound.<br>
@@ -23,6 +24,7 @@
 -- "6" - 1oct up<br>
 -- "7" - 2oct up<br>
 -- "8" - 3oct up<br>
+<br>
 <br>
 - Chrod Mode
 <img src="chrodmode.jpg">
