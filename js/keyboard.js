@@ -1,6 +1,8 @@
 var mChrodOn=0;
 var mMinor=0;
 var mSeventh=0;
+var mChordView=null; 
+
 
 /*	----------------------------------------------------------------	*/
 /*	Define behavire for PC keyboard										*/
@@ -13,6 +15,7 @@ window.addEventListener('load', function (){
 	document.onkeydown = keydown;
 	document.onkeyup = keyup;
 	for(var i=0; i<128; i++){ mPushkey[i]=0; }
+	mChordView = document.getElementById("chordview");
 
 //	console.log("Z".charCodeAt(0)); // 90
 
@@ -69,6 +72,7 @@ function keyup(event) {
 			mSeventh=0;
 		} else {
 			choroff(l_keycode);
+			mChordView.innerHTML="";
 		}
 		return;
 	}
@@ -137,12 +141,12 @@ function setKeycode( num ){
 
 function chordplay( num ){
 
+	if(mChrodOn==1) return;
+
 	var bkey0=chordbase(num);
 	var bkey1=-1;
 	var bkey2=-1;
 	var bkey3=-1;
-
-	if(mChrodOn==1) return;
 
 	if(bkey0!=-1){
 		if(mMinor==1){
@@ -166,6 +170,8 @@ function chordplay( num ){
 			if(bkey3!=-1) mPushkey[bkey3]=1;
 		}
 		mChrodOn=1;
+		if(mMinor==1) mChordView.innerHTML+="m";
+		if(mSeventh==1) mChordView.innerHTML+="7";
 	}
 }
 
@@ -206,24 +212,31 @@ function chordbase(num)
 	switch( num ){
 		case "C".charCodeAt(0):
 			cKeynum = 60;
+			mChordView.innerHTML="C";
 			break;
 		case "D".charCodeAt(0):
 			cKeynum = 62;
+			mChordView.innerHTML="D";
 			break;
 		case "E".charCodeAt(0):
 			cKeynum = 64;
+			mChordView.innerHTML="E";
 			break;
 		case "F".charCodeAt(0):
 			cKeynum = 65;
+			mChordView.innerHTML="F";
 			break;
 		case "G".charCodeAt(0):
 			cKeynum = 67;
+			mChordView.innerHTML="G";
 			break;
 		case "A".charCodeAt(0):
 			cKeynum = 69;
+			mChordView.innerHTML="A";
 			break;
 		case "B".charCodeAt(0):
 			cKeynum = 71;
+			mChordView.innerHTML="B";
 			break;
 	}
 
