@@ -184,8 +184,12 @@ function choroff(num)
 
 	if(mChrodOn==0) return;
 
+	for(var i=0; i<128; i++) mPushkey[i]=0;
+
 	if(bkey0!=-1){
-		if(mMinor==1){
+		for(var i=0; i<128; i++) mPushkey[i]=0;
+
+/*		if(mMinor==1){
 			bkey1=bkey0+3;
 		} else {
 			bkey1=bkey0+4;
@@ -199,7 +203,8 @@ function choroff(num)
 		mPushkey[bkey0]=0;
 		mPushkey[bkey1]=0;
 		mPushkey[bkey2]=0;
-		if(bkey3!=-1) mPushkey[bkey3]=0;
+		if(bkey3!=-1) mPushkey[bkey3]=0;*/
+
 		mChrodOn=0;
 	}
 }
