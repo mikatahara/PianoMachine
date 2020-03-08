@@ -75,12 +75,24 @@
 	}
 
 </style>
-
 </head>
 
 <body id="body">
 
-TEST<br>
+test
+
+<input type="button" id="px" value="aaa"></input>
+
+
+<script>
+$(document).ready(function(){
+	$("#px").mouseup(function(){
+		mNoteoff(60);
+	}).mousedown(function(){
+		mNoteon(60);
+	});
+});
+</script>
 
 <!--	------------------------------------------------------------------
 <div id="sans" style="background-color: #ffffff; position: absolute; top:28px; left:100px;">
