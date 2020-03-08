@@ -35,7 +35,7 @@ function loadDogSound(url, n) {
 
 // Decode asynchronously
 	request.onload = function() {
-		audioContext.decodeAudioData(request.response, function(buffer) {
+		mAudioContext.decodeAudioData(request.response, function(buffer) {
 		mAudioBuffer[n]= buffer; 
 		mReadFlag++;
 		}, function(){ alert('Error'); } );
