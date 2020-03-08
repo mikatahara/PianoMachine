@@ -28,6 +28,7 @@ LocalAudioBuffer.prototype={
 
 }
 
+/*
 function loadDogSound(url, n) {
 	var request = new XMLHttpRequest();
 	request.open('GET', url, true);
@@ -42,3 +43,4 @@ function loadDogSound(url, n) {
 	}
 	request.send();
 }
+*/
