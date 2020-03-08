@@ -106,17 +106,19 @@ window.addEventListener('load', function (){
 */
 
 	// Web MIDI API
-	setInputMenuID(document.input_device_select.ids);
-	setOutputMenuID(document.output_device_select.ids);
-	runTest();
+	if(document.input_device_select!=null &&
+		document.output_device_select!=null){
+		setInputMenuID(document.input_device_select.ids);
+		setOutputMenuID(document.output_device_select.ids);
+		runTest();
 
-	var timerId2=setInterval(function(){
-		if(input!=null){
-			clearInterval(timerId2);
-			input.onmidimessage = handleMIDIMessageGroundpiano;
-		}
-	}, 500 );
-
+		var timerId2=setInterval(function(){
+			if(input!=null){
+				clearInterval(timerId2);
+				input.onmidimessage = handleMIDIMessageGroundpiano;
+			}
+		}, 500 );
+	}
 
 }, false);
 
