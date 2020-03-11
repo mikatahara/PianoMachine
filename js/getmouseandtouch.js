@@ -7,32 +7,32 @@
 function touchHandler(e){
 
 	log.innerText = "ON\n";
-	touchMonitor(e);
+	touchMonitor(e,-1);
 }
 function handleStart(e){
 
 	log.innerText = "Start\n";
-	touchMonitor(e);
+	touchMonitor(e,1);
 }
 function handleEnd(e){
 
 	log.innerText = "End\n";
-	touchMonitor(e);
+	touchMonitor(e,0);
 }
 
 function handleCancel(e){
 	log.innerText = "Cancel\n";
-	touchMonitor(e);
+	touchMonitor(e,-1);
 }
 
 function handleLeave(e){
 	log.innerText = "handleLeave\n";
-	touchMonitor(e);
+	touchMonitor(e,-1);
 }
 
 function handleMove(e){
 	log.innerText = "Move\n";
-	touchMonitor(e);
+	touchMonitor(e,-1);
 }
 <!-- 
 // ----------------------------------------------------------------------------
@@ -71,12 +71,13 @@ function chageColor(e,n){
 	}
 }
 
-function touchMonitor(e){
+function touchMonitor(e,n){
 
 	// TouchList オブジェクトを取得
 	var touch_list = e.changedTouches;
 
 	if(touch_list==null) return;
+	if(n==-1) return;
 
 	// 中身に順番にアクセス
 	var num = touch_list.length;
@@ -86,6 +87,9 @@ function touchMonitor(e){
 		// Touch オブジェクトを取得
 		var touch = touch_list[i];
 
+		chageColor(touch,n);
+
+/*
 		// 識別番号を取得
 		log.innerText += "id:";
 		log.innerText += touch.identifier;
@@ -116,6 +120,7 @@ function touchMonitor(e){
 		log.innerText +="\n";
 
 		log.innerText +="-------\n";
+*/
 	}
 }
 
