@@ -51,6 +51,10 @@ function handleMouseup(e){
 function chageColor(e,n){
 	var rx = Math.floor(e.clientX/mCv.clientWidth*5);
 	var ry = Math.floor(e.clientY/mCv.clientHeight*4);
+
+	if(rx<0 || rx>=5) return;
+	if(ry<0 || ry>=4) return;
+
 	var a0 = mPcolor[ry][rx][0];
 	var a1 = mPcolor[ry][rx][1];
 	var a2 = mPcolor[ry][rx][2];
