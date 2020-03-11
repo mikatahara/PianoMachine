@@ -8,6 +8,7 @@
 	<script src="https://mikatahara.github.io/jquery-1.11.2.min.js" type="text/javascript"></script>
 	<script src="https://mikatahara.github.io/PianoMachine/js/grandpiano.js" type="text/javascript"></script>
 	<script src="https://mikatahara.github.io/PianoMachine/js/localaudiobuffer.js" type="text/javascript"></script>
+	<script src="js/getmouseandtouch.js" type="text/javascript" ></script>
 
 <!-- 	<script src="https://mikatahara.github.io/mywebmidiapi.js" type="text/javascript"></script> -->
 <!-- 	<script src="https://mikatahara.github.io/PianoMachine/js/keyboard.js" type="text/javascript"></script> -->
@@ -74,15 +75,20 @@
 		auto;-webkit-text-size-adjust:	100%;
 	}
 
+	#touchBox{  height:100%; width:100%; }
+
 </style>
 </head>
 
 <body id="body">
 
-test
+<canvas id="touchBox"></canvas>
 
+<br>
 <input type="button" id="px" value="aaa"></input>
 
+<br>
+<div id="log"></div>
 
 <script>
 $(document).ready(function(){
