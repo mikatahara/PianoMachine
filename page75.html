@@ -85,8 +85,8 @@
 
 <canvas id="touchBox"></canvas>
 
-<br>
-<!-- <input type="button" id="px" value="aaa"></input> -->
+<br><br>
+<input type="button" id="px" value="aaa"></input>
 
 <br>
 <div id="log"></div>
@@ -97,7 +97,11 @@ $(document).ready(function(){
 		mNoteoff(60);
 	}).mousedown(function(){
 		mNoteon(60);
-	});
+	}).touchstart(function(){
+		mNoteon(60);
+	}).touchend(function(){
+		mNoteoff(60);
+	})
 });
 </script>
 
