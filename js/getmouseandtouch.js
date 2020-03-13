@@ -55,6 +55,8 @@ function chageColor(e,n){
 	if(rx<0 || rx>=5) return;
 	if(ry<0 || ry>=4) return;
 
+	log.innerText += " chageColor ";
+
 	var a0 = mPcolor[ry][rx][0];
 	var a1 = mPcolor[ry][rx][1];
 	var a2 = mPcolor[ry][rx][2];
