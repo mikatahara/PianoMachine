@@ -214,6 +214,10 @@ function mNoteon( ckey )
 		mAudioSource[jnum]=null;
 	}
 
+	if(mAudioContext==null){
+		log.innerText = "mAudioContext error\n";
+	}
+
 	mAudioSource[jnum] = mAudioContext.createBufferSource();	// creates a sound source
 	mAudioSource[jnum].buffer = mAudioBuffer[cnum];				// tell the source which sound to play
 	mAudioSource[jnum].connect(mNode);
