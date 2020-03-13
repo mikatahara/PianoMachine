@@ -53,9 +53,9 @@ function chageColor(e,n){
 	var ry = Math.floor(e.clientY/mCv.clientHeight*4);
 
 	log.innerText += " chageColor ";
-	log.innerText += rx;
+	log.innerText += e.clientX;
 	log.innerText += " ";
-	log.innerText += ry;
+	log.innerText += e.clientY;
 	log.innerText += "\n";
 
 	if(rx<0 || rx>=5) return;
