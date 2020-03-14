@@ -12,7 +12,6 @@ function touchHandler(e){
 function handleStart(e){
 
 	log.innerText = "Start\n";
-	mNoteon(60);
 	touchMonitor(e,1);
 }
 function handleEnd(e){
@@ -153,7 +152,9 @@ function touchMonitor(e,n){
 	var mPcolor=null;
 	var mNnotenum=null;
 
-window.onload = function() {
+//window.onload = function() 
+
+function init_start(){
 
 	mPcolor=new Array(4);
 	mNotenum=new Array(4);
