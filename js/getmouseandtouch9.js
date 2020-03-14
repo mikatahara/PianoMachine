@@ -152,9 +152,7 @@ function touchMonitor(e,n){
 	var mPcolor=null;
 	var mNnotenum=null;
 
-//window.onload = function() 
-
-function init_start(){
+window.onload = function() {
 
 	mPcolor=new Array(4);
 	mNotenum=new Array(4);
@@ -273,8 +271,10 @@ function init_start(){
 	var mKeylim 			= new Array(mSOUNDNUM);
 	var mKeyTotal 			= 0;
 
-window.addEventListener('load', function (){
+//window.addEventListener('load', function (){
 
+function init_start()
+{
 	mLocalAudioBuffer= Array(mSOUNDNUM);
 	mAudioBuffer = Array(mSOUNDNUM);
 	mAudioContext = new AudioContext(); //Use Audio Interface
@@ -359,8 +359,9 @@ window.addEventListener('load', function (){
 			}
 		}, 500 );
 	}
+}
 
-}, false);
+// }, false);
 
 function loadDogSound(url, n) {
 	var request = new XMLHttpRequest();
