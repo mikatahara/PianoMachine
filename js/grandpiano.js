@@ -37,6 +37,7 @@ window.addEventListener('load', function (){
 
 	mLocalAudioBuffer= Array(mSOUNDNUM);
 	mAudioBuffer = Array(mSOUNDNUM);
+	window.AudioContext = window.AudioContext||window.webkitAudioContext;
 	mAudioContext = new AudioContext(); //Use Audio Interface
 	mNode 		= mAudioContext.createScriptProcessor(mBuffersize, 2, 2);
 	mNode.onaudioprocess = process;
