@@ -275,23 +275,27 @@ window.onload = function() {
 
 function init_start()
 {
+	log.innerText ="** A";
 	mLocalAudioBuffer= Array(mSOUNDNUM);
 	mAudioBuffer = Array(mSOUNDNUM);
 	mAudioContext = new AudioContext(); //Use Audio Interface
 	mNode 		= mAudioContext.createScriptProcessor(mBuffersize, 2, 2);
 	mNode.onaudioprocess = process;
+	log.innerText +="** B";
 
 	mReadFlag=0;
 
 	for(var i=0; i<mSOUNDNUM; i++){
 		mLocalAudioBuffer[i]=new LocalAudioBuffer();
 	}
+	log.innerText +="** C";
 
 	//Key Information
 	for(var i=0; i<mSOUNDNUM; i++){
 		mKeylim[i]=new Array(3);
 	}
 
+	log.innerText +="** D";
 	mKeylim[mc0 ] = [ 21,36,38 ];
 	mKeylim[mf0 ] = [ 39,41,44 ];
 	mKeylim[mb0 ] = [ 45,47,48 ];
@@ -310,15 +314,21 @@ function init_start()
 	mKeylim[md5 ] = [ 97,98,99 ];
 	mKeylim[mf5 ] = [ 100,101,108 ];
 
+	log.innerText +="** E";
 	mKeyTotal = mKeylim[mf5 ][2] - mKeylim[mc0 ][0]+1;
 	mAudioSource = Array(mKeyTotal);
 	for(var i=0; i<mKeyTotal; i++){
 		mAudioSource[i]=null;
 	}
 
+	log.innerText +="** F";
 	//Load Files
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB0.wav" ,mb0 );
+	log.innerText +="** G";
+
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTC0.wav" ,mc0 );
+	log.innerText +="** H";
+
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF0.wav" ,mf0 );
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA1.wav" ,ma1 );
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD1.wav" ,md1 );
@@ -345,8 +355,9 @@ function init_start()
 	}, 500 );
 */
 
+	log.innerText +="** I";
 	// Web MIDI API
-	if(document.input_device_select!=null &&
+/*	if(document.input_device_select!=null &&
 		document.output_device_select!=null){
 		setInputMenuID(document.input_device_select.ids);
 		setOutputMenuID(document.output_device_select.ids);
@@ -358,7 +369,7 @@ function init_start()
 				input.onmidimessage = handleMIDIMessageGroundpiano;
 			}
 		}, 500 );
-	}
+	}*/
 }
 
 // }, false);
