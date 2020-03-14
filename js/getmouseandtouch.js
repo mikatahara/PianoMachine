@@ -206,12 +206,23 @@ window.onload = function() {
 		x0=0;
 	}
 
-	log.innerText  = "height:";
+	if(log!=null) log.innerText = "準備できるまでお待ちください。\n";
+	log.innerText += "height:";
 	log.innerText += mCv.clientHeight;
-	log.innerText +="\n";
+	log.innerText +=" ";
 	log.innerText += "width:";
 	log.innerText += mCv.clientWidth;
 	log.innerText +="\n";
+
+	if(log!=null){
+		var timerId=setInterval(function(){
+			log.innerText += "*";
+			if(mReadFlag==mSOUNDNUM){
+				clearInterval(timerId);
+				log.innerText += "\n準備OK 画面を横向きにしてタッチしてください。\n";
+			}
+		}, 500 );
+	}
 
 	mCv.addEventListener("touchstart", handleStart, false);
 	mCv.addEventListener("touchend", handleEnd, false);

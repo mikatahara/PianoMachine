@@ -77,8 +77,6 @@ window.addEventListener('load', function (){
 		mAudioSource[i]=null;
 	}
 
-	if(log!=null) log.innerText += "準備できるまでお待ちください。\n";
-
 	//Load Files
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB0.wav" ,mb0 );
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTC0.wav" ,mc0 );
@@ -97,16 +95,6 @@ window.addEventListener('load', function (){
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTG4.wav" ,mg4 );
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD5.wav" ,md5 );
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF5.wav" ,mf5 );
-
-	if(log!=null){
-		var timerId=setInterval(function(){
-			log.innerText += "*";
-			if(mReadFlag==mSOUNDNUM){
-				clearInterval(timerId);
-				log.innerText += "\n準備OK 画面を横向きにしてタッチしてください。\n";
-			}
-		}, 500 );
-	}
 
 	// Web MIDI API
 	if(document.input_device_select!=null &&
