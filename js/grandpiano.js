@@ -77,7 +77,7 @@ window.addEventListener('load', function (){
 		mAudioSource[i]=null;
 	}
 
-	log.innerText = "準備できるまでお待ちください。";
+	log.innerText += "準備できるまでお待ちください。\n";
 
 	//Load Files
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB0.wav" ,mb0 );
@@ -99,10 +99,10 @@ window.addEventListener('load', function (){
 	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF5.wav" ,mf5 );
 
 	var timerId=setInterval(function(){
-		log.innerText = "*";
+		log.innerText += "*";
 		if(mReadFlag==mSOUNDNUM){
 			clearInterval(timerId);
-			log.innerText = "準備OK 画面を横向きにしてタッチしてください。\n";
+			log.innerText += "\n準備OK 画面を横向きにしてタッチしてください。\n";
 		}
 	}, 500 );
 
