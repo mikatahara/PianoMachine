@@ -52,12 +52,6 @@ function chageColor(e,n){
 	var rx = Math.floor(e.clientX/mCv.clientWidth*5);
 	var ry = Math.floor(e.clientY/mCv.clientHeight*4);
 
-	log.innerText = "dhageColor rx ";
-	log.innerText += e.clientX;
-	log.innerText += " ry ";
-	log.innerText += e.clientY;
-	log.innerText += "\n";
-
 	if(rx<0 || rx>=5) return;
 	if(ry<0 || ry>=4) return;
 
