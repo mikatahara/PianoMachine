@@ -77,10 +77,12 @@ function chageColor(e,n){
 	mCtx.fillStyle = "rgb("+a0+","+a1+","+a2+")";
 	mCtx.fillRect(x0,y0,mXx,mYy);
 
-	log.innerText += "GO\n";
 
 	if(n==1){
+		log.innerText += "GO ";
+		log.innerText += mNotenum[3-ry][rx];
 		mNoteon(mNotenum[3-ry][rx]);
+		log.innerText += " OFF\n";
 	} else {
 		mNoteoff(mNotenum[3-ry][rx]);
 	}
