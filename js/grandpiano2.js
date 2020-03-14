@@ -198,6 +198,9 @@ function mNoteon( ckey )
 	var cnum=0;
 	var jnum=ckey- mKeylim[mc0 ][0];
 
+	log.innerText += " jnum= ";
+	log.innerText += jnum;
+
 	if( jnum >= mKeyTotal ) return; 
 
 	for(var i=0; i<mSOUNDNUM; i++){
@@ -212,6 +215,12 @@ function mNoteon( ckey )
 	if(mAudioSource[jnum]!=null ){
 		mAudioSource[jnum].stop(10);							// play the source now
 		mAudioSource[jnum]=null;
+	}
+
+	if(mAudioContext==null){
+		log.innerText += " NG ";
+	} else {
+		log.innerText += " OK ";
 	}
 
 	mAudioSource[jnum] = mAudioContext.createBufferSource();	// creates a sound source
