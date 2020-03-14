@@ -277,9 +277,13 @@ function init_start()
 {
 	log.innerText ="** A";
 	mLocalAudioBuffer= Array(mSOUNDNUM);
+	log.innerText ="** 1";
 	mAudioBuffer = Array(mSOUNDNUM);
+	log.innerText ="** 2";
 	mAudioContext = new AudioContext(); //Use Audio Interface
+	log.innerText ="** 3";
 	mNode 		= mAudioContext.createScriptProcessor(mBuffersize, 2, 2);
+	log.innerText ="** 4";
 	mNode.onaudioprocess = process;
 	log.innerText +="** B";
 
