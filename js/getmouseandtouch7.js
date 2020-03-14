@@ -12,6 +12,7 @@ function touchHandler(e){
 function handleStart(e){
 
 	log.innerText = "Start\n";
+	mNoteon(60);
 	touchMonitor(e,1);
 }
 function handleEnd(e){
