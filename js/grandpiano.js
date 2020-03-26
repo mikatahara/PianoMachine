@@ -78,23 +78,43 @@ window.addEventListener('load', function (){
 	}
 
 	//Load Files
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB0.wav" ,mb0 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTC0.wav" ,mc0 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF0.wav" ,mf0 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA1.wav" ,ma1 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD1.wav" ,md1 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTFs1.wav",mf1s);
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA2.wav" ,ma2 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTCs2.wav",mc2s);
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTE2.wav" ,me2 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTCs3.wav",mc3s);
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF3.wav" ,mf3 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTGs3.wav",mg3s);
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB4.wav" ,mb4 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD4.wav" ,md4 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTG4.wav" ,mg4 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD5.wav" ,md5 );
-	loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF5.wav" ,mf5 );
+	if(mSoundName==null){
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB0.wav" ,mb0 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTC0.wav" ,mc0 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF0.wav" ,mf0 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA1.wav" ,ma1 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD1.wav" ,md1 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTFs1.wav",mf1s);
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTA2.wav" ,ma2 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTCs2.wav",mc2s);
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTE2.wav" ,me2 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTCs3.wav",mc3s);
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF3.wav" ,mf3 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTGs3.wav",mg3s);
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTB4.wav" ,mb4 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD4.wav" ,md4 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTG4.wav" ,mg4 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTD5.wav" ,md5 );
+		loadDogSound("https://mikatahara.github.io/PianoMachine/wav/PFSTF5.wav" ,mf5 );
+	} else {
+		loadDogSound(mSoundName[0] ,mb0 );
+		loadDogSound(mSoundName[1] ,mc0 );
+		loadDogSound(mSoundName[2] ,mf0 );
+		loadDogSound(mSoundName[3] ,ma1 );
+		loadDogSound(mSoundName[4] ,md1 );
+		loadDogSound(mSoundName[5] ,mf1s);
+		loadDogSound(mSoundName[6] ,ma2 );
+		loadDogSound(mSoundName[7] ,mc2s);
+		loadDogSound(mSoundName[8] ,me2 );
+		loadDogSound(mSoundName[8] ,mc3s);
+		loadDogSound(mSoundName[10],mf3 );
+		loadDogSound(mSoundName[11],mg3s);
+		loadDogSound(mSoundName[12],mb4 );
+		loadDogSound(mSoundName[13],md4 );
+		loadDogSound(mSoundName[14],mg4 );
+		loadDogSound(mSoundName[15],md5 );
+		loadDogSound(mSoundName[16],mf5 );
+	}
 
 	// Web MIDI API
 	if(document.input_device_select!=null &&
