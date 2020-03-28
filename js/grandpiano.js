@@ -106,7 +106,7 @@ window.addEventListener('load', function (){
 		loadDogSound(mSoundName[6] ,ma2 );
 		loadDogSound(mSoundName[7] ,mc2s);
 		loadDogSound(mSoundName[8] ,me2 );
-		loadDogSound(mSoundName[8] ,mc3s);
+		loadDogSound(mSoundName[9] ,mc3s);
 		loadDogSound(mSoundName[10],mf3 );
 		loadDogSound(mSoundName[11],mg3s);
 		loadDogSound(mSoundName[12],mb4 );
